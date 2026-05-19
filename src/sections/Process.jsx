@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../components/UI/Card'; // UI component import
 
 export default function Process() {
   const steps = [
@@ -13,7 +14,6 @@ export default function Process() {
     <section id='process' className="bg-zinc-950 text-zinc-100 py-24 px-4 md:px-8 border-t border-zinc-900">
       <div className="max-w-4xl mx-auto space-y-16">
         
-        {/* HEADER: With consistency label */}
         <div className="text-center space-y-4">
           <span className="text-[10px] tracking-[0.3em] uppercase text-amber-500/80 font-mono">The Protocol</span>
           <h2 className="text-3xl md:text-5xl font-serif font-light text-zinc-100">The Recognition Path</h2>
@@ -22,27 +22,27 @@ export default function Process() {
           </p>
         </div>
 
-        {/* Timeline Component */}
-        <div className="relative border-l border-zinc-800 ml-4 md:ml-32 space-y-16">
+        {/* Timeline with Card integration */}
+        <div className="relative border-l border-zinc-800 ml-4 md:ml-32 space-y-12">
           {steps.map((step, idx) => (
             <div key={idx} className="relative pl-8 md:pl-12 group">
               {/* Counter Indicator Dot */}
-              <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-zinc-950 border border-zinc-700 text-[10px] flex items-center justify-center text-amber-500 font-mono group-hover:border-amber-500 transition-all duration-300">
+              <div className="absolute -left-[17px] top-4 w-8 h-8 rounded-full bg-zinc-950 border border-zinc-700 text-[10px] flex items-center justify-center text-amber-500 font-mono group-hover:border-amber-500 transition-all duration-300">
                 0{idx + 1}
               </div>
               
-              <div className="space-y-3">
-                <h3 className="text-xl font-serif font-medium text-zinc-100 group-hover:text-amber-500 transition-colors">
+              {/* REFACTORED: Step content inside a subtle Card */}
+              <Card className="p-6 md:p-8 hover:bg-zinc-900/50 transition-colors duration-500">
+                <h3 className="text-xl font-serif font-medium text-zinc-100 mb-3 group-hover:text-amber-500 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-zinc-400 font-light text-sm leading-relaxed max-w-2xl">
+                <p className="text-zinc-400 font-light text-sm leading-relaxed">
                   {step.desc}
                 </p>
-              </div>
+              </Card>
             </div>
           ))}
         </div>
-        
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Card from '../components/UI/Card'; // UI component import
+import Button from '../components/UI/Button'; // UI component import
 
 export default function ContactForm() {
   const [step, setStep] = useState(0);
@@ -7,53 +9,16 @@ export default function ContactForm() {
   });
 
   const stepsData = {
-    1: {
-      question: "What is your total active professional leadership or entrepreneurial experience?",
-      key: "experience",
-      options: [
-        "Over 15 Years (Eligible for Senior Fast-Track Peer Review)",
-        "10 to 15 Years (Eligible for Advanced Strategic Path)",
-        "5 to 10 Years (Eligible for Standard Experiential Audit)",
-        "Under 5 Years (Requires Special Board Case Review)"
-      ]
-    },
-    2: {
-      question: "What is your primary commercial or academic objective for credential validation?",
-      key: "intention",
-      options: [
-        "To legally append the formal 'Dr.' prefix to my corporate profile",
-        "To fortify global enterprise credibility & fundraising capability",
-        "To secure international advisory panel positions & global consulting slots",
-        "To transition into elite global research & strategic think-tank circles"
-      ]
-    },
-    3: {
-      question: "Which institutional validation pathway aligns with your strategic requirements?",
-      key: "pathway",
-      options: [
-        "Dual Validation Pathway (Simultaneous European & Global Credentials)",
-        "Single Direct Validation Track (Targeted Specific Core Institution)",
-        "Undecided (Requires Direct Consultation with Academic Board Advisor)"
-      ]
-    }
+    1: { question: "What is your total active professional leadership or entrepreneurial experience?", key: "experience", options: ["Over 15 Years (Eligible for Senior Fast-Track Peer Review)", "10 to 15 Years (Eligible for Advanced Strategic Path)", "5 to 10 Years (Eligible for Standard Experiential Audit)", "Under 5 Years (Requires Special Board Case Review)"] },
+    2: { question: "What is your primary commercial or academic objective for credential validation?", key: "intention", options: ["To legally append the formal 'Dr.' prefix to my corporate profile", "To fortify global enterprise credibility & fundraising capability", "To secure international advisory panel positions & global consulting slots", "To transition into elite global research & strategic think-tank circles"] },
+    3: { question: "Which institutional validation pathway aligns with your strategic requirements?", key: "pathway", options: ["Dual Validation Pathway (Simultaneous European & Global Credentials)", "Single Direct Validation Track (Targeted Specific Core Institution)", "Undecided (Requires Direct Consultation with Academic Board Advisor)"] }
   };
 
   const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const handleInitialSubmit = (e) => { e.preventDefault(); setStep(1); };
   const handleOptionSelect = (key, value) => setFormData({ ...formData, [key]: value });
-  
-  const handleNext = () => {
-    if (formData[stepsData[step].key]) setStep((prev) => prev + 1);
-    else alert("Please select an option before proceeding.");
-  };
-
-  const handleFinalSubmit = (e) => {
-    e.preventDefault();
-    console.log("Techversity Executive Dossier Submitted: ", formData);
-    alert("Dossier filed successfully! Your profile evaluation has been locked.");
-    setStep(0);
-    setFormData({ name: '', email: '', phone: '', currentRole: '', experience: '', intention: '', pathway: '' });
-  };
+  const handleNext = () => { if (formData[stepsData[step].key]) setStep((prev) => prev + 1); else alert("Please select an option before proceeding."); };
+  const handleFinalSubmit = (e) => { e.preventDefault(); console.log("Techversity Executive Dossier Submitted: ", formData); alert("Dossier filed successfully! Your profile evaluation has been locked."); setStep(0); setFormData({ name: '', email: '', phone: '', currentRole: '', experience: '', intention: '', pathway: '' }); };
 
   return (
     <section id="contact" className="bg-zinc-950 text-white py-24 px-4 md:px-8 border-t border-zinc-900 scroll-mt-20">
@@ -74,7 +39,8 @@ export default function ContactForm() {
           ))}
         </div>
 
-        <div className="bg-zinc-900/30 border border-zinc-800 p-6 md:p-8 rounded-xl backdrop-blur-sm shadow-xl min-h-[380px] flex flex-col justify-center">
+        {/* REFACTORED: Card Component ka use */}
+        <Card className="p-6 md:p-8 min-h-[380px] flex flex-col justify-center">
           
           {step === 0 && (
             <form onSubmit={handleInitialSubmit} className="space-y-4 animate-fadeIn">
@@ -96,9 +62,8 @@ export default function ContactForm() {
                 <label className="text-xs uppercase tracking-wider text-zinc-400 font-medium">Current Role / Corporate Industry</label>
                 <input type="text" required name="currentRole" value={formData.currentRole} onChange={handleInputChange} className="w-full bg-zinc-950 border border-zinc-800/80 rounded-lg p-3 text-sm text-zinc-200 focus:outline-none focus:border-amber-500/50 transition-colors" placeholder="Founder & CEO / Senior Corporate Director" />
               </div>
-              <button type="submit" className="w-full cursor-pointer bg-amber-500 hover:bg-amber-600 text-zinc-950 font-medium py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5 mt-4">
-                Continue to Eligibility Steps →
-              </button>
+              {/* REFACTORED: Button Component */}
+              <Button type="submit" variant="primary" className="w-full mt-4">Continue to Eligibility Steps →</Button>
             </form>
           )}
 
@@ -106,9 +71,7 @@ export default function ContactForm() {
             <div className="space-y-6 animate-fadeIn">
               <div className="space-y-1.5">
                 <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-amber-500">Evaluation Phase 0{step} of 03</span>
-                <h3 className="text-lg font-serif italic font-medium text-zinc-100 tracking-wide leading-relaxed">
-                  "{stepsData[step].question}"
-                </h3>
+                <h3 className="text-lg font-serif italic font-medium text-zinc-100 tracking-wide leading-relaxed">"{stepsData[step].question}"</h3>
               </div>
               <div className="grid gap-3">
                 {stepsData[step].options.map((option, idx) => {
@@ -124,10 +87,11 @@ export default function ContactForm() {
                 })}
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-zinc-900/60">
-                <button type="button" onClick={() => setStep(step - 1)} className="cursor-pointer text-xs font-medium uppercase tracking-wider text-zinc-500 hover:text-zinc-300 transition-colors">← Back</button>
-                <button type="button" onClick={handleNext} disabled={!formData[stepsData[step].key]} className={`cursor-pointer px-6 py-2.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all duration-300 ${formData[stepsData[step].key] ? 'bg-zinc-100 text-zinc-950 hover:bg-amber-500 hover:text-zinc-950' : 'bg-zinc-900 text-zinc-600 cursor-not-allowed'}`}>
+                {/* REFACTORED: Button Components */}
+                <Button variant="ghost" onClick={() => setStep(step - 1)}>← Back</Button>
+                <Button variant="primary" onClick={handleNext} disabled={!formData[stepsData[step].key]}>
                   {step === 3 ? "Review dossier →" : "Next Step →"}
-                </button>
+                </Button>
               </div>
             </div>
           )}
@@ -139,13 +103,11 @@ export default function ContactForm() {
                 <h3 className="text-base font-serif font-medium text-zinc-100">Dossier Alignment Ready</h3>
                 <p className="text-xs text-zinc-400 font-light max-w-xs mx-auto">Hi {formData.name}, your credentials profile has been successfully generated.</p>
               </div>
-              <button onClick={handleFinalSubmit} className="w-full cursor-pointer bg-amber-500 hover:bg-amber-600 text-zinc-950 font-bold py-3.5 rounded-lg text-xs uppercase tracking-widest transition-all duration-300">
-                Submit Confidential Dossier
-              </button>
+              <Button onClick={handleFinalSubmit} variant="primary" className="w-full">Submit Confidential Dossier</Button>
               <button type="button" onClick={() => setStep(3)} className="cursor-pointer text-[11px] uppercase tracking-wider text-zinc-500 hover:text-zinc-400 underline underline-offset-4">Modify Answers</button>
             </div>
           )}
-        </div>
+        </Card>
       </div>
     </section>
   );

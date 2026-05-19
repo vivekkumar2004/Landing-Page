@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../components/UI/Card'; // UI component import
 
 export default function Blog() {
   const articles = [
@@ -23,17 +24,16 @@ export default function Blog() {
     <section className="bg-zinc-950 text-zinc-100 py-24 px-4 md:px-8 border-t border-zinc-900">
       <div className="max-w-6xl mx-auto space-y-16">
         
-        {/* HEADER: Authority Focused */}
         <div className="text-center space-y-4">
           <span className="text-[10px] tracking-[0.3em] uppercase text-amber-500/80 font-mono">Academic Library</span>
           <h2 className="text-3xl md:text-5xl font-serif font-light text-zinc-100">Insights & Legacy Voice</h2>
           <p className="text-zinc-500 text-sm font-light">Deep analysis regarding executive prestige management and institutional authority.</p>
         </div>
 
-        {/* ARTICLES GRID */}
+        {/* REFACTORED: Using Card component */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {articles.map((art, idx) => (
-            <article key={idx} className="group bg-zinc-900/20 border border-zinc-800/50 rounded-lg p-8 flex flex-col justify-between hover:border-amber-500/30 transition-all duration-500">
+            <Card key={idx} className="group flex flex-col justify-between hover:border-amber-500/30">
               <div className="space-y-6">
                 <span className="text-[10px] tracking-[0.2em] uppercase text-zinc-500 font-mono group-hover:text-amber-500 transition-colors">
                   {art.tag}
@@ -51,7 +51,7 @@ export default function Blog() {
                   Read Article <span>→</span>
                 </span>
               </div>
-            </article>
+            </Card>
           ))}
         </div>
       </div>

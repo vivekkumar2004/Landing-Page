@@ -1,6 +1,19 @@
 import React from 'react';
 
 export default function Footer() {
+  const links = {
+    platform: [
+      { name: "Institutional Audit", path: "#" },
+      { name: "Credential Validation", path: "#" },
+      { name: "Dossier Access", path: "#" },
+    ],
+    governance: [
+      { name: "Privacy Policy", path: "#" },
+      { name: "Terms of Service", path: "#" },
+      { name: "Verify Credential", path: "#" },
+    ]
+  };
+
   return (
     <footer className="bg-zinc-950 border-t border-zinc-900 pt-20 pb-10 px-6">
       <div className="max-w-6xl mx-auto">
@@ -14,23 +27,23 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* QUICK LINKS */}
+          {/* DYNAMIC LINKS: Platform */}
           <div className="space-y-4">
             <h4 className="text-white text-[10px] uppercase tracking-widest font-bold">Platform</h4>
             <ul className="space-y-3 text-zinc-500 text-xs">
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Institutional Audit</li>
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Credential Validation</li>
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Dossier Access</li>
+              {links.platform.map((l) => (
+                <li key={l.name} className="hover:text-amber-500 cursor-pointer transition-colors">{l.name}</li>
+              ))}
             </ul>
           </div>
 
-          {/* LEGAL & CONTACT */}
+          {/* DYNAMIC LINKS: Governance */}
           <div className="space-y-4">
             <h4 className="text-white text-[10px] uppercase tracking-widest font-bold">Governance</h4>
             <ul className="space-y-3 text-zinc-500 text-xs">
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Privacy Policy</li>
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Terms of Service</li>
-              <li className="hover:text-amber-500 cursor-pointer transition-colors">Verify Credential</li>
+              {links.governance.map((l) => (
+                <li key={l.name} className="hover:text-amber-500 cursor-pointer transition-colors">{l.name}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -40,12 +53,11 @@ export default function Footer() {
           <div className="text-zinc-700 text-[10px] font-mono uppercase tracking-widest">
             © {new Date().getFullYear()} Techversity.ai — Global Academic Recognition
           </div>
-          <div className="flex items-center gap-4 text-zinc-600">
-            {/* Simple Security Badge Indicator */}
-            <div className="flex items-center gap-1.5 px-3 py-1 bg-zinc-900 rounded-full border border-zinc-800">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-              <span className="text-[9px] uppercase tracking-wider font-bold">Encrypted Dossier Flow</span>
-            </div>
+          
+          {/* SECURE BADGE: Consistent with UI design */}
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-zinc-900/50 rounded-full border border-zinc-800 text-zinc-400">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+            <span className="text-[9px] uppercase tracking-wider font-bold">Encrypted Dossier Flow</span>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Card from '../components/UI/Card'; // UI component import kiya
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState(null);
@@ -27,7 +28,8 @@ export default function FAQ() {
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="border border-zinc-800 bg-zinc-900/30 rounded-lg overflow-hidden">
+            /* REFACTORED: Har FAQ item ab ek Card hai */
+            <Card key={idx} className="p-0 overflow-hidden">
               <button 
                 onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
                 className="w-full text-left px-6 py-5 flex items-center justify-between font-serif text-zinc-200 hover:text-amber-500 transition-colors"
@@ -40,7 +42,7 @@ export default function FAQ() {
                   {faq.a}
                 </div>
               )}
-            </div>
+            </Card>
           ))}
         </div>
       </div>

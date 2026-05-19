@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../components/UI/Card'; // UI component import
 
 export default function LegacyTeam() {
   const team = [
@@ -11,30 +12,29 @@ export default function LegacyTeam() {
     <section className="bg-zinc-950 text-white py-24 px-4 md:px-8">
       <div className="max-w-6xl mx-auto space-y-20">
         
-        {/* HEADER WITH KICKER LABEL */}
         <div className="text-center space-y-4">
           <span className="text-[10px] tracking-[0.3em] uppercase text-amber-500/80 font-mono">Advisory Council</span>
           <h2 className="text-3xl md:text-5xl font-serif font-semibold">The Advisory Council</h2>
           <p className="text-zinc-400 max-w-xl mx-auto text-sm md:text-base font-light">Meet the veteran consultants who bridge elite industry impact with international academia.</p>
         </div>
 
-        {/* Team Grid */}
+        {/* REFACTORED: Team members using the reusable Card component */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {team.map((member, i) => (
-            <div key={i} className="space-y-4 group">
-              <div className="aspect-[4/5] overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 grayscale group-hover:grayscale-0 transition-all duration-500">
+            <Card key={i} className="group border-zinc-800 bg-zinc-900/50 hover:-translate-y-2">
+              <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6 grayscale group-hover:grayscale-0 transition-all duration-500">
                 <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
-              <div className="space-y-1 px-1">
+              <div className="space-y-1">
                 <h4 className="text-lg font-serif font-medium text-zinc-200">{member.name}</h4>
                 <p className="text-xs text-amber-500 font-medium tracking-wide uppercase">{member.role}</p>
                 <p className="text-sm text-zinc-400 font-light pt-1">{member.exp}</p>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
-        {/* Video Testimonials Demo Frame */}
+        {/* Video Testimonials */}
         <div className="border-t border-zinc-900 pt-16 space-y-10">
           <h3 className="text-2xl font-serif text-center font-medium">Interviews With Conferred Leaders</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -45,7 +45,6 @@ export default function LegacyTeam() {
                   alt="Testimonial Thumbnail" 
                   className="absolute inset-0 w-full h-full object-cover filter brightness-50 group-hover:scale-105 transition-transform duration-500" 
                 />
-                {/* Play Button Icon */}
                 <div className="relative z-10 w-14 h-14 bg-amber-500 text-zinc-950 rounded-full flex items-center justify-center shadow-lg group-hover:bg-amber-400 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 ml-1"><path d="M8 5v14l11-7z"/></svg>
                 </div>

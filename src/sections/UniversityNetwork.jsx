@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../components/UI/Card'; // UI component import
 
 export default function UniversityNetwork() {
   const universityLogos = [
@@ -21,30 +22,31 @@ export default function UniversityNetwork() {
         {/* ROW 1: Slide Left */}
         <div className="flex w-[200%] animate-slideLeft gap-8 whitespace-nowrap">
           {[...universityLogos, ...universityLogos].map((logo, i) => (
-            <div key={i} className="h-20 px-6 bg-zinc-900/30 border border-zinc-800/60 rounded-xl flex items-center gap-4 min-w-[280px] max-w-[320px] transition-all duration-300 hover:border-amber-500/30 hover:bg-zinc-900/60 group cursor-default grayscale hover:grayscale-0">
+            <Card key={i} className="h-20 px-6 flex items-center gap-4 min-w-[280px] max-w-[320px] bg-zinc-900/30 grayscale hover:grayscale-0 cursor-default">
               <div className="text-xl opacity-60 group-hover:opacity-100 transition-opacity shrink-0">{logo.crest}</div>
               <div className="flex flex-col text-left whitespace-normal max-w-[200px]">
                 <span className="text-xs font-serif font-bold tracking-wide text-zinc-400 group-hover:text-zinc-200 transition-colors leading-tight">{logo.name}</span>
                 <span className="text-[9px] uppercase tracking-widest text-zinc-600 group-hover:text-amber-500/80 transition-colors mt-0.5">{logo.city}</span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* ROW 2: Slide Right */}
         <div className="flex w-[200%] animate-slideRight gap-8 whitespace-nowrap">
           {[...universityLogos, ...universityLogos].reverse().map((logo, i) => (
-            <div key={i} className="h-20 px-6 bg-zinc-900/30 border border-zinc-800/60 rounded-xl flex items-center gap-4 min-w-[280px] max-w-[320px] transition-all duration-300 hover:border-amber-500/30 hover:bg-zinc-900/60 group cursor-default grayscale hover:grayscale-0">
+            <Card key={i} className="h-20 px-6 flex items-center gap-4 min-w-[280px] max-w-[320px] bg-zinc-900/30 grayscale hover:grayscale-0 cursor-default">
               <div className="text-xl opacity-60 group-hover:opacity-100 transition-opacity shrink-0">{logo.crest}</div>
               <div className="flex flex-col text-left whitespace-normal max-w-[200px]">
                 <span className="text-xs font-serif font-bold tracking-wide text-zinc-400 group-hover:text-zinc-200 transition-colors leading-tight">{logo.name}</span>
                 <span className="text-[9px] uppercase tracking-widest text-zinc-600 group-hover:text-amber-500/80 transition-colors mt-0.5">{logo.city}</span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
 
+      {/* Gradients */}
       <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-20"></div>
       <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none z-20"></div>
     </section>

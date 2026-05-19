@@ -1,4 +1,6 @@
 import React from 'react';
+import Card from '../components/UI/Card'; 
+import Button from '../components/UI/Button'; // Button component import kiya
 
 export default function WhoThisIsFor() {
   const audiences = [
@@ -26,10 +28,7 @@ export default function WhoThisIsFor() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {audiences.map((aud, index) => (
-            <div 
-              key={index} 
-              className="group relative bg-zinc-900/30 border border-zinc-800/50 p-10 rounded-2xl hover:border-amber-500/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-            >
+            <Card key={index} className="group relative overflow-hidden p-10 hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               <h3 className="text-2xl font-serif font-medium text-zinc-100 mb-5 group-hover:text-amber-500 transition-colors duration-300">
@@ -38,17 +37,16 @@ export default function WhoThisIsFor() {
               <p className="text-zinc-400 text-sm leading-relaxed font-light tracking-wide">
                 {aud.text}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
 
+        {/* REFACTORED: Ab yahan hamara custom Button component use ho raha hai */}
         <div className="text-center pt-2">
-          {/* UPDATED: Changed <button> to <a> for proper anchor navigation */}
-          <a 
-            href="#contact" 
-            className="group relative inline-block px-10 py-4 bg-zinc-100 text-zinc-950 rounded-md font-medium text-sm uppercase tracking-widest hover:bg-amber-500 transition-all duration-300 cursor-pointer"
-          >
-            Secure Your Dossier Consultation
+          <a href="#contact">
+            <Button variant="secondary">
+              Secure Your Dossier Consultation
+            </Button>
           </a>
         </div>
       </div>
