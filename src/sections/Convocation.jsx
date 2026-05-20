@@ -26,8 +26,13 @@ export default function Convocation() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#C89B2C]/30 bg-[#C89B2C]/5 text-[#C89B2C] text-[10px] uppercase tracking-[0.2em] font-medium">
             Moments of Achievement
           </div>
-          <h2 className="text-4xl md:text-6xl font-serif text-[#132238] tracking-tight">
-            Global <span className="text-[#C89B2C] italic">Convocations</span>
+          
+          {/* Apply Playfair Display exactly like the reference image */}
+          <h2 
+            className="text-4xl md:text-6xl text-[#132238] tracking-tight"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Global <span className="text-[#C89B2C] italic font-normal">Convocations</span>
           </h2>
         </div>
 

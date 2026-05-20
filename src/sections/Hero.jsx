@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../components/UI/Button";
 
 export default function Hero() {
   return (
