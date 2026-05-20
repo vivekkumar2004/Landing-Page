@@ -31,7 +31,7 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-3 shrink-0">
-          <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[12px] font-sans font-semibold tracking-[0.22em] uppercase text-[#132238]">
+          <div className="hidden md:flex items-center gap-8 lg:gap-10 text-sm font-sans font-medium tracking-[0.02em] text-[#132238]">
             <HashLink
               to="/#who"
               className="relative py-1 hover:text-[#2563EB] transition-colors duration-300 group"
@@ -81,7 +81,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden mt-4 pt-4 border-t border-[#2563EB]/10 flex flex-col gap-4 text-xs font-sans font-medium tracking-widest uppercase text-[#334155]">
+        <div className="md:hidden mt-4 pt-4 border-t border-[#2563EB]/10 flex flex-col gap-4 text-sm font-sans font-medium tracking-[0.02em] text-[#334155]">
           <HashLink
             to="/#who"
             onClick={() => setIsMenuOpen(false)}

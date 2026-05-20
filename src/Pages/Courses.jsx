@@ -4,7 +4,8 @@ import CourseCard from "../components/UI/CourseCard";
 export default function CoursesPage() {
   const programmes = [
     {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
+      logo:
+        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Doctor of Business Administration (DBA)",
       subtitle: "Professional Doctorate",
       description:
@@ -13,7 +14,8 @@ export default function CoursesPage() {
         "https://images.pexels.com/photos/7972741/pexels-photo-7972741.jpeg",
     },
     {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
+      logo:
+        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Executive MBA (EMBA)",
       subtitle: "Executive Management",
       description:
@@ -22,7 +24,8 @@ export default function CoursesPage() {
         "https://images.pexels.com/photos/7942550/pexels-photo-7942550.jpeg",
     },
     {
-      logo: "https://images.pexels.com/photos/8106691/pexels-photo-8106691.jpeg",
+      logo:
+        "https://images.pexels.com/photos/8106691/pexels-photo-8106691.jpeg",
       title: "Master of Business Administration (MBA)",
       subtitle: "General Management",
       description:
@@ -31,7 +34,8 @@ export default function CoursesPage() {
         "https://images.pexels.com/photos/7972741/pexels-photo-7972741.jpeg",
     },
     {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
+      logo:
+        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Honorary Doctorate",
       subtitle: "Academic Recognition",
       description:
@@ -40,7 +44,8 @@ export default function CoursesPage() {
         "https://images.pexels.com/photos/7973213/pexels-photo-7973213.jpeg",
     },
     {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
+      logo:
+        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Doctor of Philosophy (PhD)",
       subtitle: "Research Doctorate",
       description:
@@ -58,25 +63,39 @@ export default function CoursesPage() {
   ];
 
   return (
-    <div className="bg-[#EEF4FF] min-h-screen text-[#132238] py-24 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto space-y-24">
+    <section className="bg-[#EEF4FF] text-[#132238] min-h-screen py-16 md:py-20 px-4 md:px-8 lg:px-12 border-t border-[#1A2B42]/10">
+      {/* Container */}
+      <div className="max-w-6xl mx-auto space-y-16 md:space-y-20">
         {/* Header Section */}
-        <div className="text-center space-y-6">
-          <h1 className="text-5xl md:text-6xl font-serif text-[#132238] tracking-tight">
-            Explore <span className="text-[#2563EB] italic">Programmes</span>
+        <div className="text-center space-y-5 md:space-y-6">
+          <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold">
+            Academic Programmes
+          </span>
+
+          <h1 className="font-serif text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-[#132238]">
+            Explore{" "}
+            <span className="italic font-normal text-[#2563EB]">
+              Programmes
+            </span>
           </h1>
-          <p className="text-[#334155] max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Select from our globally accredited leadership pathways designed for
-            the modern executive.
+
+          <p className="max-w-2xl mx-auto text-[#334155]/80 text-sm md:text-base leading-relaxed font-normal">
+            Select from globally accredited leadership pathways designed for
+            executives, entrepreneurs, and professionals seeking advanced
+            academic distinction.
           </p>
         </div>
 
-        {/* Programmes Grid */}
-        <div className="space-y-10">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-[#2563EB] font-mono text-center">
-            Available Pathways
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Programmes Section */}
+        <div className="space-y-8 md:space-y-10">
+          <div className="text-center">
+            <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#2563EB] font-semibold">
+              Available Pathways
+            </span>
+          </div>
+
+          {/* Increased spacing between cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
             {programmes.map((prog, idx) => (
               <CourseCard key={idx} {...prog} />
             ))}
@@ -84,15 +103,23 @@ export default function CoursesPage() {
         </div>
 
         {/* Specialisations Section */}
-        <div className="space-y-10">
-          <h2 className="text-sm uppercase tracking-[0.3em] text-[#C89B2C] font-mono text-center">
-            Specialisations
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+        <div className="space-y-8 md:space-y-10">
+          <div className="text-center space-y-4">
+            <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold">
+              Specialisations
+            </span>
+
+            <p className="max-w-2xl mx-auto text-[#132238]/70 text-sm md:text-base leading-relaxed font-normal">
+              Focus your academic journey on the disciplines shaping modern
+              business and executive leadership.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {specializations.map((spec, idx) => (
               <div
                 key={idx}
-                className="px-6 py-3 border border-[#C89B2C]/20 bg-white/50 text-[#132238] text-sm tracking-wider uppercase backdrop-blur-sm"
+                className="px-5 md:px-6 py-3 rounded-full border border-[#C89B2C]/20 bg-white/70 backdrop-blur-sm text-[#132238] text-[11px] md:text-xs uppercase tracking-[0.22em] font-semibold shadow-sm hover:border-[#C89B2C]/40 hover:bg-white transition-all duration-300"
               >
                 {spec}
               </div>
@@ -100,6 +127,6 @@ export default function CoursesPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

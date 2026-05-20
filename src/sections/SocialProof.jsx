@@ -9,22 +9,23 @@ export default function SocialProof() {
   ];
 
   return (
-    <section className="bg-[#EEF4FF] border-y border-[#1A2B42]/10 py-16 px-4 md:px-8 relative z-20">
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-4 text-center">
+    <section className="bg-[#EEF4FF] border-y border-[#1A2B42]/10 py-16 px-4 relative z-20">
+      
+      {/* max-w-7xl karne se content screen par aur zyada fail jayega (corners ka space kam hoga) */}
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 text-center">
         {stats.map((stat, idx) => (
           <div 
             key={idx} 
-            className={`space-y-2 md:px-4 ${
-              idx !== stats.length - 1 ? 'md:border-r md:border-[#1A2B42]/10' : ''
+            className={`flex flex-col items-center justify-center space-y-3 ${
+              // Border ko last element pe hata diya hai
+              idx !== stats.length - 1 ? 'lg:border-r lg:border-[#1A2B42]/10' : ''
             }`}
           >
-            {/* Number color set to Gold (#C89B2C) */}
-            <div className="text-3xl md:text-4xl font-serif font-medium text-[#C89B2C] tracking-tight">
+            <div className="text-4xl lg:text-5xl font-serif font-bold text-[#C89B2C] tracking-tighter">
               {stat.value}
             </div>
             
-            {/* Label style tailored for the Soft Blue theme */}
-            <div className="text-[10px] md:text-xs text-[#132238]/60 tracking-[0.2em] uppercase font-medium max-w-[150px] mx-auto leading-relaxed">
+            <div className="text-[10px] lg:text-[11px] text-[#132238]/70 tracking-[0.25em] uppercase font-bold leading-relaxed max-w-[160px]">
               {stat.label}
             </div>
           </div>
