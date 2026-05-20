@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../components/UI/Card'; // UI component import
+import Card from '../components/UI/Card';
 
 export default function LegacyTeam() {
   const team = [
@@ -9,46 +9,51 @@ export default function LegacyTeam() {
   ];
 
   return (
-    <section className="bg-zinc-950 text-white py-24 px-4 md:px-8">
+    <section className="bg-[#EEF4FF] text-[#132238] py-24 px-4 md:px-8 border-t border-[#1A2B42]/10">
       <div className="max-w-6xl mx-auto space-y-20">
         
-        <div className="text-center space-y-4">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-amber-500/80 font-mono">Advisory Council</span>
-          <h2 className="text-3xl md:text-5xl font-serif font-semibold">The Advisory Council</h2>
-          <p className="text-zinc-400 max-w-xl mx-auto text-sm md:text-base font-light">Meet the veteran consultants who bridge elite industry impact with international academia.</p>
-        </div>
-
-        {/* REFACTORED: Team members using the reusable Card component */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {team.map((member, i) => (
-            <Card key={i} className="group border-zinc-800 bg-zinc-900/50 hover:-translate-y-2">
-              <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6 grayscale group-hover:grayscale-0 transition-all duration-500">
-                <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              </div>
-              <div className="space-y-1">
-                <h4 className="text-lg font-serif font-medium text-zinc-200">{member.name}</h4>
-                <p className="text-xs text-amber-500 font-medium tracking-wide uppercase">{member.role}</p>
-                <p className="text-sm text-zinc-400 font-light pt-1">{member.exp}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Video Testimonials */}
-        <div className="border-t border-zinc-900 pt-16 space-y-10">
-          <h3 className="text-2xl font-serif text-center font-medium">Interviews With Conferred Leaders</h3>
+        {/* VIDEO SECTION */}
+        <div className="space-y-10">
+          <div className="text-center space-y-4">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C89B2C] font-mono">Proof of Impact</span>
+            <h2 className="text-3xl md:text-5xl font-serif font-medium text-[#132238]">Interviews With Conferred Leaders</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[1, 2].map((video) => (
-              <div key={video} className="relative aspect-video rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center overflow-hidden group cursor-pointer">
+              <div key={video} className="relative aspect-video rounded-xl bg-white border border-[#1A2B42]/10 flex items-center justify-center overflow-hidden group cursor-pointer shadow-sm">
                 <img 
                   src={video === 1 ? "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" : "https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=600&q=80"} 
                   alt="Testimonial Thumbnail" 
-                  className="absolute inset-0 w-full h-full object-cover filter brightness-50 group-hover:scale-105 transition-transform duration-500" 
+                  className="absolute inset-0 w-full h-full object-cover filter brightness-70 group-hover:scale-105 transition-transform duration-500" 
                 />
-                <div className="relative z-10 w-14 h-14 bg-amber-500 text-zinc-950 rounded-full flex items-center justify-center shadow-lg group-hover:bg-amber-400 transition-colors">
+                <div className="relative z-10 w-14 h-14 bg-[#C89B2C] text-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#B38927] transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 ml-1"><path d="M8 5v14l11-7z"/></svg>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ADVISORY COUNCIL */}
+        <div className="border-t border-[#1A2B42]/10 pt-16 space-y-10">
+          <div className="text-center space-y-4">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#C89B2C] font-mono">Advisory Council</span>
+            <h3 className="text-3xl md:text-5xl font-serif font-semibold text-[#132238]">The Advisory Council</h3>
+            <p className="text-[#132238]/70 max-w-xl mx-auto text-sm md:text-base font-light">Meet the veteran consultants who bridge elite industry impact with international academia.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, i) => (
+              <Card key={i} className="group border-[#1A2B42]/10 bg-white/60 backdrop-blur-md hover:-translate-y-2 transition-all duration-300">
+                <div className="aspect-[4/5] overflow-hidden rounded-lg mb-6 grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-lg font-serif font-medium text-[#132238]">{member.name}</h4>
+                  <p className="text-xs text-[#C89B2C] font-medium tracking-wide uppercase">{member.role}</p>
+                  <p className="text-sm text-[#132238]/70 font-light pt-1">{member.exp}</p>
+                </div>
+              </Card>
             ))}
           </div>
         </div>

@@ -9,25 +9,22 @@ export default function SocialProof() {
   ];
 
   return (
-    /* TWEAKED: Changed bg to zinc-900 with clear top/bottom borders to break the continuity from Hero */
-    <section className="bg-zinc-900 border-y border-zinc-800/80 py-10 px-4 md:px-8 relative z-20 shadow-xl">
-      {/* Container with premium inner spacing */}
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 text-center">
+    <section className="bg-[#EEF4FF] border-y border-[#1A2B42]/10 py-16 px-4 md:px-8 relative z-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-4 text-center">
         {stats.map((stat, idx) => (
           <div 
             key={idx} 
-            /* TWEAKED: Changed divider border color to match the new zinc-900 background seamlessly */
-            className={`space-y-1.5 md:px-4 ${
-              idx !== stats.length - 1 ? 'md:border-r md:border-zinc-800/50' : ''
+            className={`space-y-2 md:px-4 ${
+              idx !== stats.length - 1 ? 'md:border-r md:border-[#1A2B42]/10' : ''
             }`}
           >
-            {/* The Earned Number: Crisp serif style matching elite credentials */}
-            <div className="text-3xl md:text-4xl font-serif font-medium text-amber-500 tracking-tight">
+            {/* Number color set to Gold (#C89B2C) */}
+            <div className="text-3xl md:text-4xl font-serif font-medium text-[#C89B2C] tracking-tight">
               {stat.value}
             </div>
             
-            {/* The Specific Label: Transformed into micro-tracking caps */}
-            <div className="text-[10px] md:text-xs text-zinc-400 tracking-[0.15em] uppercase font-medium max-w-[180px] mx-auto leading-relaxed">
+            {/* Label style tailored for the Soft Blue theme */}
+            <div className="text-[10px] md:text-xs text-[#132238]/60 tracking-[0.2em] uppercase font-medium max-w-[150px] mx-auto leading-relaxed">
               {stat.label}
             </div>
           </div>

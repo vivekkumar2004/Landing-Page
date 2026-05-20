@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../components/UI/Card'; // UI component import
+import Card from '../components/UI/Card'; 
 
 export default function Blog() {
   const articles = [
@@ -21,33 +21,32 @@ export default function Blog() {
   ];
 
   return (
-    <section className="bg-zinc-950 text-zinc-100 py-24 px-4 md:px-8 border-t border-zinc-900">
+    <section className="bg-[#EEF4FF] text-[#132238] py-24 px-4 md:px-8 border-t border-[#1A2B42]/10">
       <div className="max-w-6xl mx-auto space-y-16">
         
         <div className="text-center space-y-4">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-amber-500/80 font-mono">Academic Library</span>
-          <h2 className="text-3xl md:text-5xl font-serif font-light text-zinc-100">Insights & Legacy Voice</h2>
-          <p className="text-zinc-500 text-sm font-light">Deep analysis regarding executive prestige management and institutional authority.</p>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[#C89B2C] font-mono">Academic Library</span>
+          <h2 className="text-3xl md:text-5xl font-serif text-[#132238]">Insights & Legacy Voice</h2>
+          <p className="text-[#132238]/70 text-sm font-light">Deep analysis regarding executive prestige management and institutional authority.</p>
         </div>
 
-        {/* REFACTORED: Using Card component */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {articles.map((art, idx) => (
-            <Card key={idx} className="group flex flex-col justify-between hover:border-amber-500/30">
+            <Card key={idx} className="group flex flex-col justify-between bg-white/60 backdrop-blur-md border-[#1A2B42]/10 hover:border-[#C89B2C]/30 hover:bg-white/80 transition-all duration-300">
               <div className="space-y-6">
-                <span className="text-[10px] tracking-[0.2em] uppercase text-zinc-500 font-mono group-hover:text-amber-500 transition-colors">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-[#132238]/50 font-mono group-hover:text-[#C89B2C] transition-colors">
                   {art.tag}
                 </span>
-                <h3 className="text-lg font-serif font-medium text-zinc-100 leading-snug group-hover:text-amber-500 transition-colors">
+                <h3 className="text-lg font-serif font-medium text-[#132238] leading-snug group-hover:text-[#C89B2C] transition-colors">
                   {art.title}
                 </h3>
-                <p className="text-zinc-400 text-xs font-light leading-relaxed">
+                <p className="text-[#132238]/70 text-xs font-light leading-relaxed">
                   {art.desc}
                 </p>
               </div>
               
               <div className="pt-8">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 group-hover:text-amber-500 transition-colors flex items-center gap-2 cursor-pointer">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#C89B2C] transition-colors flex items-center gap-2 cursor-pointer">
                   Read Article <span>→</span>
                 </span>
               </div>

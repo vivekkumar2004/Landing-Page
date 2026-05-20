@@ -4,7 +4,24 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  /* Theme: The Diplomat (Navy & Champagne) */
+  --color-primary: #1A2B42; /* Midnight Navy */
+  --color-accent: #D4AF37;  /* Champagne Gold */
+  --color-background: #F8F9FA; /* Paper White */
+  --color-text: #2D3436;    /* Soft Charcoal */
+  --color-border: rgba(26, 43, 66, 0.15);
+}
+
 @theme {
+  /* Colors */
+  --color-primary: var(--color-primary);
+  --color-accent: var(--color-accent);
+  --color-bg: var(--color-background);
+  --color-text: var(--color-text);
+  --color-line: var(--color-border);
+
+  /* Existing Animations */
   --animate-marquee: marquee 25s linear infinite;
   --animate-slideLeft: slideLeft 35s linear infinite;
   --animate-slideRight: slideRight 35s linear infinite;
@@ -21,4 +38,10 @@ html {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
+}
+
+/* Global Styles */
+body {
+  background: #07111F;
+  color: white;
 }

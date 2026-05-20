@@ -1,44 +1,86 @@
-import React from 'react';
-import Button from '../components/UI/Button'; // UI folder se import
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/UI/Button";
 
 export default function Hero() {
   return (
-    <section className="relative bg-zinc-950 text-white min-h-[90vh] flex items-center justify-center py-20 px-4 md:px-8 overflow-hidden">
-      
-      {/* Background Visual Remains Unchanged */}
-      <div className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden bg-zinc-950">
-        <img
-          src="https://images.unsplash.com/photo-1758413352731-d6f9ce3b59d9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Grand University Hall"
-          className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-[0.4] select-none"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-transparent to-zinc-950"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,#09090b_85%)] opacity-75"></div>
+    // Premium Soft Blue Background
+    <section className="relative bg-gradient-to-br from-[#EEF4FF] via-[#F5F9FF] to-[#E6F0FF] text-[#132238] min-h-[100vh] flex items-center py-20 px-4 md:px-12 lg:px-24 overflow-hidden border-b border-[#1A2B42]/10">
+      {/* Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Top Right Glow */}
+        <div className="absolute top-[-120px] right-[-100px] w-[650px] h-[650px] bg-[#4F8CFF]/10 rounded-full blur-[140px]"></div>
+
+        {/* Bottom Left Glow */}
+        <div className="absolute bottom-[-150px] left-[-120px] w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[120px]"></div>
+
+        {/* Premium Grid Texture */}
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #1A2B42 1px, transparent 1px)",
+            backgroundSize: "60px 100%",
+          }}
+        ></div>
+
+        {/* Soft Radial Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(79,140,255,0.08),transparent_40%)]"></div>
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 animate-fadeIn">
-        <span className="inline-block text-[10px] md:text-xs tracking-[0.22em] uppercase text-amber-500 font-bold bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">
-          Exclusive Legacy Consultancy
-        </span>
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        {/* Left Content */}
+        <div className="flex-1 text-left space-y-8">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-[#1A2B42]/10 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] text-[#1A2B42] shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+            Globally Accredited Doctorate Pathways
+          </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight max-w-4xl mx-auto leading-[1.12] text-zinc-100">
-          Your Life's Work Deserves a Title That{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 italic font-serif">
-            Matches It.
-          </span>
-        </h1>
+          {/* Heading */}
+          <h1 className="text-5xl lg:text-7xl font-serif font-medium tracking-tight leading-[1.05] text-[#132238]">
+            Bridging Decades of <br />
+            <span className="text-[#C89B2C] italic">
+              Professional Excellence
+            </span>{" "}
+            <br />
+            with Academic Prestige.
+          </h1>
 
-        <p className="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-          For <span className="text-zinc-200 font-medium">Founders, CEOs, Doctors, Authors & Social Leaders</span> who have shaped their industry and earned global respect.
-        </p>
+          {/* Description */}
+          <p className="text-[#4A5568] text-lg max-w-xl font-light leading-relaxed pl-6 border-l-2 border-[#D4AF37]">
+            We don’t sell degrees. <strong>Techversity</strong> bridges the gap
+            between your life’s work and the academic recognition it deserves.
+          </p>
 
-        {/* REFACTORED: Button component usage */}
-        <div className="pt-4 flex justify-center">
-          <a href="#contact">
-            <Button variant="primary" className="shadow-xl shadow-amber-500/20">
-              Begin Your Recognition Journey →
-            </Button>
-          </a>
+          {/* Buttons */}
+          <div className="pt-4 flex flex-col md:flex-row items-center justify-start gap-4">
+            <Link to="/courses" className="w-full md:w-[200px]">
+              <button className="w-full cursor-pointer h-[54px] bg-white text-[#2563EB] border border-[#2563EB]/20 hover:bg-[#EFF6FF] hover:text-[#1D4ED8] transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-md shadow-xl shadow-[#2563EB]/25">
+                Explore Courses
+              </button>
+            </Link>
+
+            <a href="#contact" className="w-full md:w-[200px]">
+              <button className=" cursor-pointer w-full h-[54px] bg-white text-[#2563EB] border border-[#2563EB]/20 hover:bg-[#EFF6FF] hover:text-[#1D4ED8] transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-md shadow-xl shadow-[#2563EB]/25">
+                Book Consultant
+              </button>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="flex-1 w-full lg:h-[500px]">
+          <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-white/40 relative backdrop-blur-xl">
+            {/* Glass Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#132238]/10 to-transparent z-10"></div>
+
+            <img
+              src="https://images.pexels.com/photos/13440917/pexels-photo-13440917.jpeg"
+              alt="Professional"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
