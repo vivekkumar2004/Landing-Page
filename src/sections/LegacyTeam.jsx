@@ -1,5 +1,10 @@
 import React from 'react';
 import Card from '../components/UI/Card';
+import img1 from "../assets/Image/img1.avif"
+import img2 from "../assets/Image/img2.avif"
+import img3 from "../assets/Image/img3.avif"
+import img4 from "../assets/Image/img4.avif"
+import img5 from "../assets/Image/img5.avif"
 
 export default function LegacyTeam() {
   const team = [
@@ -7,19 +12,19 @@ export default function LegacyTeam() {
       name: "Dr. Priya Nair",
       role: "Academic Relations",
       exp: "14 years connecting professionals with global universities.",
-      img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=500&q=80"
+      img: img1
     },
     {
       name: "Marcus Vance",
       role: "Global Profile Evaluator",
       exp: "Ex-admissions director mapping cross-border credentials.",
-      img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=500&q=80"
+      img: img2
     },
     {
       name: "Dr. Arvinder Singh",
       role: "Documentation Counsel",
       exp: "Ensuring regulatory and dossier structural perfection.",
-      img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=500&q=80"
+      img: img3
     }
   ];
 
@@ -48,8 +53,8 @@ export default function LegacyTeam() {
                 <img
                   src={
                     video === 1
-                      ? "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
-                      : "https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=600&q=80"
+                      ? img4
+                      : img5
                   }
                   alt="Testimonial Thumbnail"
                   className="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:scale-105 transition-transform duration-700"

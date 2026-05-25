@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import convocation1 from "../assets/Convocation/convocation1.jpeg"
+import convocation2 from "../assets/Convocation/convocation2.jpeg"
+import convocation3 from "../assets/Convocation/convocation3.avif"
+import convocation4 from "../assets/Convocation/convocation4.avif"
+
 
 const images = [
-  "https://images.pexels.com/photos/35486988/pexels-photo-35486988.jpeg",
-  "https://images.pexels.com/photos/35264578/pexels-photo-35264578.jpeg",
-  "https://images.unsplash.com/photo-1758270703761-9943411ec6d7?w=1200&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&auto=format&fit=crop&q=80"
+  convocation1,
+  convocation2,
+  convocation3,
+  convocation4
 ];
 
 export default function Convocation() {

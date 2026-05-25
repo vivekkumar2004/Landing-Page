@@ -1,35 +1,39 @@
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import TestimonialCard from '../components/UI/TestimonialCard';
+import testimonials1 from "../assets/Testimonials/testimonials1.jpeg"
+import testimonials2 from "../assets/Testimonials/testimonials2.jpeg"
+import testimonials3 from "../assets/Testimonials/testimonials3.jpeg"
+import testimonials4 from "../assets/Testimonials/testimonials4.jpeg"
 
 const testimonials = [
   {
-    name: "Dr. Ananya Sharma",
+    name: "Dr. John Carter",
     role: "Chief Strategy Officer",
     text: "The path to my doctorate was surprisingly streamlined. It allowed me to formalize my decades of corporate strategy experience into a recognized academic achievement without forcing me to take a career break.",
     linkedin: "https://linkedin.com",
-    pfp: "https://i.pravatar.cc/150?u=5"
+    pfp: testimonials1
   },
   {
-    name: "Dr. Vikram Singh",
+    name: "Dr. Emma Wilson",
     role: "Managing Director, FinTech",
     text: "I needed a program that respected my time as a busy executive. The faculty here doesn't just teach theory; they provide actionable insights that I started applying to our board meetings immediately.",
     linkedin: "https://linkedin.com",
-    pfp: "https://i.pravatar.cc/150?u=6"
+    pfp: testimonials2
   },
   {
     name: "Dr. Sophia Laurent",
     role: "Founder, GreenEnergy",
     text: "Getting my honorary doctorate felt like the final piece of the puzzle for my career. The entire process was handled with such professionalism and discretion that I felt completely supported throughout.",
     linkedin: "https://linkedin.com",
-    pfp: "https://i.pravatar.cc/150?u=7"
+    pfp: testimonials3
   },
   {
     name: "Dr. Arjun Mehta",
     role: "Director of Operations",
     text: "What stood out most was the quality of peer interaction. Being part of a cohort of high-level professionals made the learning experience incredibly rich and practically relevant to my daily challenges.",
     linkedin: "https://linkedin.com",
-    pfp: "https://i.pravatar.cc/150?u=8"
+    pfp: testimonials4
   }
 ];
 

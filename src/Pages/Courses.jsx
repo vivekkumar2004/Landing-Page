@@ -1,57 +1,51 @@
 import React from "react";
 import CourseCard from "../components/UI/CourseCard";
+import courses1 from "../assets/Courses/courses1.jpeg"
+import courses2 from "../assets/Courses/courses2.jpeg"
+import courses3 from "../assets/Courses/courses3.jpeg"
+import courses4 from "../assets/Courses/courses4.jpeg"
 
 export default function CoursesPage() {
   const programmes = [
     {
-      logo:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Doctor of Business Administration (DBA)",
       subtitle: "Professional Doctorate",
       description:
         "An executive program designed for senior leaders to master applied research, strategic decision-making, and organizational transformation.",
       image_url:
-        "https://images.pexels.com/photos/7972741/pexels-photo-7972741.jpeg",
+        courses1,
     },
     {
-      logo:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Executive MBA (EMBA)",
       subtitle: "Executive Management",
       description:
         "Fast-track your path to the boardroom. This program focuses on global leadership, venture strategy, and high-stakes executive management.",
       image_url:
-        "https://images.pexels.com/photos/7942550/pexels-photo-7942550.jpeg",
+        courses2,
     },
     {
-      logo:
-        "https://images.pexels.com/photos/8106691/pexels-photo-8106691.jpeg",
       title: "Master of Business Administration (MBA)",
       subtitle: "General Management",
       description:
         "A comprehensive journey into modern business theory, perfect for ambitious professionals ready to scale their impact across industries.",
       image_url:
-        "https://images.pexels.com/photos/7972741/pexels-photo-7972741.jpeg",
+        courses1,
     },
     {
-      logo:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Honorary Doctorate",
       subtitle: "Academic Recognition",
       description:
         "A prestigious recognition for individuals who have demonstrated exceptional leadership and contribution to their respective fields.",
       image_url:
-        "https://images.pexels.com/photos/7973213/pexels-photo-7973213.jpeg",
+        courses3,
     },
     {
-      logo:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder.png",
       title: "Doctor of Philosophy (PhD)",
       subtitle: "Research Doctorate",
       description:
         "A rigorous research-based program for scholars seeking to contribute original knowledge and expertise to the global business landscape.",
       image_url:
-        "https://images.pexels.com/photos/7942493/pexels-photo-7942493.jpeg",
+        courses4,
     },
   ];
 
