@@ -23,6 +23,11 @@ export default function TestimonialCard({ name, role, text, linkedin, pfp }) {
         <img
           src={pfp}
           alt={name}
+          loading="lazy"
+          decoding="async"
+          width="48"
+          height="48"
+          sizes="48px"
           className="w-12 h-12 rounded-full object-cover border border-[#2563EB]/10"
         />
         <div className="flex-grow">

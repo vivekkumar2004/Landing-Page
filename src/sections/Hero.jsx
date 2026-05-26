@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Popup from "../components/UI/Popup";
-import hero from "../assets/Home/hero.jpg"
+import hero from "../assets/Home/hero.jpg";
 
 export default function Hero() {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,19 +9,25 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 1000); 
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       <section className="relative bg-gradient-to-br from-[#EEF4FF] via-[#F5F9FF] to-[#E6F0FF] text-[#132238] min-h-[90vh] flex items-center py-20 px-4 md:px-12 lg:px-24 overflow-hidden border-b border-[#1A2B42]/10">
-        
         {/* Background Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-[-120px] right-[-100px] w-[650px] h-[650px] bg-[#4F8CFF]/10 rounded-full blur-[140px]"></div>
-          <div className="absolute bottom-[-150px] left-[-120px] w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[120px]"></div>
-          <div className="absolute inset-0 opacity-[0.035]" style={{ backgroundImage: "linear-gradient(to right, #1A2B42 1px, transparent 1px)", backgroundSize: "60px 100%" }}></div>
+          <div className="absolute top-[-120px] right-[-100px] w-[650px] h-[650px] bg-[#4F8CFF]/10 rounded-full blur-[140px] hidden sm:block"></div>
+          <div className="absolute bottom-[-150px] left-[-120px] w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[120px] hidden sm:block"></div>
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, #1A2B42 1px, transparent 1px)",
+              backgroundSize: "60px 100%",
+            }}
+          ></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(79,140,255,0.08),transparent_40%)]"></div>
         </div>
 
@@ -35,14 +41,17 @@ export default function Hero() {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight leading-[1.05] text-[#132238]">
               <span className="whitespace-nowrap">Bridging Decades of</span>
               <br />
-              <span className="text-[#C89B2C] italic">Professional Excellence</span>{" "}
+              <span className="text-[#C89B2C] italic">
+                Professional Excellence
+              </span>{" "}
               <br />
               with Academic Prestige.
             </h1>
 
             <p className="text-[#4A5568] text-lg max-w-xl font-light leading-relaxed pl-6 border-l-2 border-[#D4AF37]">
-              We don’t sell degrees. <strong>Techversity</strong> bridges the gap
-              between your life’s work and the academic recognition it deserves.
+              We don’t sell degrees. <strong>Techversity</strong> bridges the
+              gap between your life’s work and the academic recognition it
+              deserves.
             </p>
 
             <div className="pt-4 flex flex-col md:flex-row items-center justify-start gap-4">
@@ -59,10 +68,19 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex-1 w-full lg:h-[500px]">
+          <div className="flex-1 w-full h-[300px] sm:h-[400px] lg:h-[500px]">
             <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-white/40 relative backdrop-blur-xl">
               <div className="absolute inset-0 bg-gradient-to-t from-[#132238]/10 to-transparent z-10"></div>
-              <img src={hero} alt="Professional" className="w-full h-full object-cover" />
+              <img
+                src={hero}
+                alt="Professional academic mentor portrait"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                width="1200"
+                height="900"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

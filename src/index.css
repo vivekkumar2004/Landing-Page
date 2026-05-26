@@ -6,21 +6,25 @@ html {
 
 /* index.css */
 body {
-  background-color: #F8F9FA; /* Hero section ke color se match karo */
+  background-color: #F8F9FA;
   color: #132238;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
-  letter-spacing: -0.025em; /* Ye letter spacing fonts ko premium aur 'on-point' banati hai */
+  letter-spacing: -0.025em;
 }
 :root {
-  /* Theme: The Diplomat (Navy & Champagne) */
-  --color-primary: #1A2B42; /* Midnight Navy */
-  --color-accent: #D4AF37;  /* Champagne Gold */
-  --color-background: #F8F9FA; /* Paper White */
-  --color-text: #2D3436;    /* Soft Charcoal */
+  --color-primary: #1A2B42;
+  --color-accent: #D4AF37;
+  --color-background: #F8F9FA;
+  --color-text: #2D3436;
   --color-border: rgba(26, 43, 66, 0.15);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 @theme {
@@ -54,7 +58,7 @@ h1, h2, h3 {
 body {
   background: #07111F;
   color: white;
-  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -62,7 +66,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 p,
@@ -79,5 +83,20 @@ input,
 textarea,
 label {
   font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 

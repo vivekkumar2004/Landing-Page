@@ -1,10 +1,10 @@
-import React from 'react';
-import Card from '../components/UI/Card';
-import img1 from "../assets/Image/img1.avif"
-import img2 from "../assets/Image/img2.avif"
-import img3 from "../assets/Image/img3.avif"
-import img4 from "../assets/Image/img4.avif"
-import img5 from "../assets/Image/img5.avif"
+import React from "react";
+import Card from "../components/UI/Card";
+import img1 from "../assets/Image/img1.avif";
+import img2 from "../assets/Image/img2.avif";
+import img3 from "../assets/Image/img3.avif";
+import img4 from "../assets/Image/img4.avif";
+import img5 from "../assets/Image/img5.avif";
 
 export default function LegacyTeam() {
   const team = [
@@ -12,20 +12,20 @@ export default function LegacyTeam() {
       name: "Dr. Priya Nair",
       role: "Academic Relations",
       exp: "14 years connecting professionals with global universities.",
-      img: img1
+      img: img1,
     },
     {
       name: "Marcus Vance",
       role: "Global Profile Evaluator",
       exp: "Ex-admissions director mapping cross-border credentials.",
-      img: img2
+      img: img2,
     },
     {
       name: "Dr. Arvinder Singh",
       role: "Documentation Counsel",
       exp: "Ensuring regulatory and dossier structural perfection.",
-      img: img3
-    }
+      img: img3,
+    },
   ];
 
   return (
@@ -51,12 +51,13 @@ export default function LegacyTeam() {
                 className="relative aspect-video rounded-2xl bg-white border border-[#1A2B42]/10 flex items-center justify-center overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all duration-500"
               >
                 <img
-                  src={
-                    video === 1
-                      ? img4
-                      : img5
-                  }
-                  alt="Testimonial Thumbnail"
+                  src={video === 1 ? img4 : img5}
+                  alt="Leadership interview thumbnail"
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="720"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:scale-105 transition-transform duration-700"
                 />
 
@@ -102,6 +103,11 @@ export default function LegacyTeam() {
                   <img
                     src={member.img}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="480"
+                    height="640"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>

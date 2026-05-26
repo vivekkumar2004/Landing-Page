@@ -1,5 +1,5 @@
-import React from 'react';
-import Card from '../components/UI/Card';
+import React from "react";
+import Card from "../components/UI/Card";
 
 export default function UniversityNetwork() {
   const universityLogos = [
@@ -108,6 +108,11 @@ export default function UniversityNetwork() {
                     <img
                       src={uni.logoUrl}
                       alt={`${uni.name} Logo`}
+                      loading="lazy"
+                      decoding="async"
+                      width="64"
+                      height="64"
+                      sizes="64px"
                       className="max-h-12 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>
@@ -136,8 +141,8 @@ export default function UniversityNetwork() {
       <div className="max-w-5xl mx-auto text-center mt-12 md:mt-14 px-4 relative z-10">
         <p className="text-[#132238]/50 text-xs md:text-sm leading-relaxed font-normal">
           Partner institutions and academic affiliations are showcased to
-          highlight the international ecosystem supporting doctoral and executive
-          education pathways.
+          highlight the international ecosystem supporting doctoral and
+          executive education pathways.
         </p>
       </div>
     </section>
