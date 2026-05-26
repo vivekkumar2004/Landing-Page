@@ -30,8 +30,8 @@ export default function LegacyTeam() {
 
   return (
     <section className="bg-[#EEF4FF] text-[#132238] py-12 md:py-14 px-4 md:px-8 lg:px-12 border-t border-[#1A2B42]/10">
-      {/* Container */}
       <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
+
         {/* VIDEO SECTION */}
         <div className="space-y-8 md:space-y-10">
           <div className="text-center space-y-4">
@@ -48,16 +48,16 @@ export default function LegacyTeam() {
             {[1, 2].map((video) => (
               <div
                 key={video}
-                className="relative aspect-video rounded-2xl bg-white border border-[#1A2B42]/10 flex items-center justify-center overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all duration-500"
+                className="relative aspect-video rounded-2xl bg-white border border-[#1A2B42]/10 flex items-center justify-center overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-transform duration-500"
               >
                 <img
                   src={video === 1 ? img4 : img5}
                   alt="Leadership interview thumbnail"
                   loading="lazy"
                   decoding="async"
+                  fetchpriority="low"
                   width="1280"
                   height="720"
-                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:scale-105 transition-transform duration-700"
                 />
 
@@ -88,8 +88,7 @@ export default function LegacyTeam() {
             </h3>
 
             <p className="max-w-2xl mx-auto text-[#132238]/70 text-sm md:text-base leading-relaxed font-normal">
-              Meet the veteran consultants who bridge elite industry impact with
-              international academia.
+              Meet the veteran consultants who bridge elite industry impact with international academia.
             </p>
           </div>
 
@@ -97,17 +96,17 @@ export default function LegacyTeam() {
             {team.map((member, i) => (
               <Card
                 key={i}
-                className="group rounded-2xl p-6 md:p-8 border border-[#1A2B42]/10 bg-white/70 backdrop-blur-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-500"
+                className="group rounded-2xl p-6 md:p-8 border border-[#1A2B42]/10 bg-white/70 backdrop-blur-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform duration-500"
               >
-                <div className="aspect-[4/5] overflow-hidden rounded-xl mb-6 grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div className="aspect-[4/5] overflow-hidden rounded-xl mb-6 grayscale group-hover:grayscale-0 transition-transform duration-700 will-change-transform">
                   <img
                     src={member.img}
                     alt={member.name}
                     loading="lazy"
                     decoding="async"
+                    fetchpriority="low"
                     width="480"
                     height="640"
-                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -129,6 +128,7 @@ export default function LegacyTeam() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
