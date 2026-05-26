@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import bird from "../assets/Logo/bird.png";
+import image from "../assets/Logo/image.avif";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-center sm:gap-3">
             <img
-              src={bird}
+              src={image}
               alt="Techversity bird logo"
               width="48"
               height="48"

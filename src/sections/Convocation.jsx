@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import convocation1 from "../assets/Convocation/convocation1.jpg";
-// import convocation2 from "../assets/Convocation/convocation2.jpg";
-// import convocation3 from "../assets/Convocation/convocation3.avif";
-// import convocation4 from "../assets/Convocation/convocation4.avif";
 
 import conv1 from "../assets/Convocation/conv1.avif"
 import conv2 from "../assets/Convocation/conv2.avif"

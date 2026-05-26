@@ -76,7 +76,7 @@ export default function Hero() {
                 alt="Professional academic mentor portrait"
                 loading="eager"
                 decoding="async"
-                fetchpriority="high"
+                fetchPriority="high"
                 width="1200"
                 height="900"
                 className="w-full h-full object-cover"

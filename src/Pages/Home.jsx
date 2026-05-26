@@ -8,7 +8,7 @@ import Process from "../sections/Process";
 import UniversityNetwork from "../sections/UniversityNetwork";
 import LegacyTeam from "../sections/LegacyTeam";
 
-// 🔥 heavy below-the-fold
+
 const Testimonial = lazy(() => import("../sections/Testimonial"));
 const Convocation = lazy(() => import("../sections/Convocation"));
 const FAQ = lazy(() => import("../sections/FAQ"));
