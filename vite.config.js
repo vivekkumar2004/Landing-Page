@@ -15,16 +15,31 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom', 'react-router-hash-link'],
-          'motion': ['framer-motion'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+
+            if (id.includes('react-router-dom') || id.includes('react-router-hash-link')) {
+              return 'router'
+            }
+
+            if (id.includes('framer-motion')) {
+              return 'motion'
+            }
+
+            if (id.includes('react')) {
+              return 'react-vendor'
+            }
+
+            return 'vendor'
+          }
         },
       },
     },
+
     chunkSizeWarningLimit: 600,
   },
 })
