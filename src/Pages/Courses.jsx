@@ -1,9 +1,9 @@
 import React from "react";
 import CourseCard from "../components/UI/CourseCard";
-import courses1 from "../assets/Courses/courses1.jpeg"
-import courses2 from "../assets/Courses/courses2.jpeg"
-import courses3 from "../assets/Courses/courses3.jpeg"
-import courses4 from "../assets/Courses/courses4.jpeg"
+import courses1 from "../assets/Courses/courses1.jpg"
+import courses2 from "../assets/Courses/courses2.jpg"
+import courses3 from "../assets/Courses/courses3.jpg"
+import courses4 from "../assets/Courses/courses4.jpg"
 
 export default function CoursesPage() {
   const programmes = [

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import convocation1 from "../assets/Convocation/convocation1.jpeg"
-import convocation2 from "../assets/Convocation/convocation2.jpeg"
+import convocation1 from "../assets/Convocation/convocation1.jpg"
+import convocation2 from "../assets/Convocation/convocation2.jpg"
 import convocation3 from "../assets/Convocation/convocation3.avif"
 import convocation4 from "../assets/Convocation/convocation4.avif"
 

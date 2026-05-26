@@ -1,6 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "../components/UI/Card";
 import Button from "../components/UI/Button";
+
+const CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+const COLORS = [
+  "#C89B2C",
+  "#132238",
+  "#3B6D11",
+  "#185FA5",
+  "#993C1D",
+  "#993556",
+];
+
+const ROTATIONS = [-5, 3, -7, 4, -3, 6];
+const SHIFTS = [2, -1, 3, -2, 1, -3];
+
+function generateCaptcha() {
+  let s = "";
+
+  for (let i = 0; i < 6; i++) {
+    s += CHARS[Math.floor(Math.random() * CHARS.length)];
+  }
+
+  return s;
+}
 
 export default function ContactForm() {
   const [step, setStep] = useState(0);
@@ -15,6 +39,48 @@ export default function ContactForm() {
     pathway: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  // CAPTCHA STATES
+  const [captchaCode, setCaptchaCode] = useState(generateCaptcha());
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
+
+  const refreshIconRef = useRef(null);
+
+  // FIX: keepError=true hoga toh error clear nahi hoga
+  const refreshCaptcha = (keepError = false) => {
+    setCaptchaCode(generateCaptcha());
+    setCaptchaInput("");
+    if (!keepError) setCaptchaError("");
+
+    if (refreshIconRef.current) {
+      refreshIconRef.current.style.transition = "transform 0.4s";
+      refreshIconRef.current.style.transform = "rotate(360deg)";
+
+      setTimeout(() => {
+        if (refreshIconRef.current) {
+          refreshIconRef.current.style.transform = "rotate(0deg)";
+          refreshIconRef.current.style.transition = "";
+        }
+      }, 420);
+    }
+  };
+
+  // FIX: 6 chars type hote hi wrong captcha check
+  const handleCaptchaInput = (e) => {
+    const val = e.target.value;
+    setCaptchaInput(val);
+    setCaptchaError("");
+
+    if (val.length === 6) {
+      if (val.toUpperCase() !== captchaCode) {
+        setCaptchaError("Incorrect captcha, please try again");
+        refreshCaptcha(true);
+      }
+    }
+  };
+
   const stepsData = {
     1: {
       question:
@@ -27,6 +93,7 @@ export default function ContactForm() {
         "Under 5 Years (Requires Special Board Case Review)",
       ],
     },
+
     2: {
       question:
         "What is your primary commercial or academic objective for credential validation?",
@@ -38,6 +105,7 @@ export default function ContactForm() {
         "To transition into elite global research & strategic think-tank circles",
       ],
     },
+
     3: {
       question:
         "Which institutional validation pathway aligns with your strategic requirements?",
@@ -50,12 +118,52 @@ export default function ContactForm() {
     },
   };
 
-  const handleInputChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
+    setErrors({
+      ...errors,
+      [e.target.name]: "",
+    });
+  };
 
   const handleInitialSubmit = (e) => {
     e.preventDefault();
-    setStep(1);
+
+    let newErrors = {};
+
+    // EMAIL VALIDATION
+    if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+    ) {
+      newErrors.email = "Enter a valid email";
+    }
+
+    // PHONE VALIDATION
+    if (!/^\+?[0-9\s-]{8,15}$/.test(formData.phone)) {
+      newErrors.phone = "Enter a valid phone number";
+    }
+
+    setErrors(newErrors);
+
+    // CAPTCHA VALIDATION
+    if (!captchaInput.trim()) {
+      setCaptchaError("Please enter the captcha code");
+      return;
+    }
+
+    if (captchaInput.trim().toUpperCase() !== captchaCode) {
+      setCaptchaError("Incorrect captcha, please try again");
+      refreshCaptcha(true);
+      return;
+    }
+
+    if (Object.keys(newErrors).length === 0) {
+      setStep(1);
+    }
   };
 
   const handleOptionSelect = (key, value) =>
@@ -71,8 +179,11 @@ export default function ContactForm() {
 
   const handleFinalSubmit = (e) => {
     e.preventDefault();
+
     alert("Dossier filed successfully!");
+
     setStep(0);
+
     setFormData({
       name: "",
       email: "",
@@ -82,6 +193,10 @@ export default function ContactForm() {
       intention: "",
       pathway: "",
     });
+
+    setErrors({});
+
+    refreshCaptcha();
   };
 
   return (
@@ -90,10 +205,13 @@ export default function ContactForm() {
       className="bg-[#EEF4FF] text-[#132238] py-12 md:py-16 px-4 md:px-8 lg:px-12 border-t border-[#1A2B42]/10 scroll-mt-20"
     >
       <div className="max-w-xl mx-auto space-y-8 md:space-y-10">
+
         {/* Header */}
         <div className="text-center space-y-4 md:space-y-5">
+
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C89B2C]/20 bg-[#C89B2C]/10">
             <span className="w-1.5 h-1.5 rounded-full bg-[#C89B2C]" />
+
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold">
               {step === 0
                 ? "Direct Institutional Registration"
@@ -132,16 +250,20 @@ export default function ContactForm() {
 
         {/* Form Card */}
         <Card className="rounded-2xl p-6 md:p-8 min-h-[380px] flex flex-col justify-center bg-white/70 backdrop-blur-md border border-[#1A2B42]/10 shadow-sm">
-          {/* Step 0 */}
+
+          {/* STEP 0 */}
           {step === 0 && (
             <form
               onSubmit={handleInitialSubmit}
               className="space-y-4 animate-fadeIn"
             >
+
+              {/* Name */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-[0.22em] text-[#132238]/60 font-semibold">
                   Full Name
                 </label>
+
                 <input
                   type="text"
                   required
@@ -153,42 +275,70 @@ export default function ContactForm() {
                 />
               </div>
 
+              {/* Email + Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                {/* Email */}
                 <div className="space-y-1.5">
                   <label className="text-xs uppercase tracking-[0.22em] text-[#132238]/60 font-semibold">
                     Email Address
                   </label>
+
                   <input
                     type="email"
                     required
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full bg-white border border-[#1A2B42]/10 rounded-lg p-3 text-sm text-[#132238] focus:outline-none focus:border-[#C89B2C]/50 transition-colors"
+                    className={`w-full bg-white border rounded-lg p-3 text-sm text-[#132238] focus:outline-none focus:border-[#C89B2C]/50 transition-colors ${
+                      errors.email
+                        ? "border-red-400"
+                        : "border-[#1A2B42]/10"
+                    }`}
                     placeholder="name@company.com"
                   />
+
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
+                {/* Phone */}
                 <div className="space-y-1.5">
                   <label className="text-xs uppercase tracking-[0.22em] text-[#132238]/60 font-semibold">
                     Phone Number
                   </label>
+
                   <input
                     type="tel"
                     required
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full bg-white border border-[#1A2B42]/10 rounded-lg p-3 text-sm text-[#132238] focus:outline-none focus:border-[#C89B2C]/50 transition-colors"
-                    placeholder="+91 98765 43210"
+                    className={`w-full bg-white border rounded-lg p-3 text-sm text-[#132238] focus:outline-none focus:border-[#C89B2C]/50 transition-colors ${
+                      errors.phone
+                        ? "border-red-400"
+                        : "border-[#1A2B42]/10"
+                    }`}
+                    placeholder="+1 98765 43210"
                   />
+
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
               </div>
 
+              {/* Role */}
               <div className="space-y-1.5">
                 <label className="text-xs uppercase tracking-[0.22em] text-[#132238]/60 font-semibold">
                   Current Role / Corporate Industry
                 </label>
+
                 <input
                   type="text"
                   required
@@ -200,15 +350,100 @@ export default function ContactForm() {
                 />
               </div>
 
+              {/* CAPTCHA */}
+              <div className="space-y-2 pt-2">
+
+                <p className="text-xs uppercase tracking-[0.22em] text-[#132238]/60 font-semibold">
+                  Security Verification
+                </p>
+
+                <div className="flex items-start gap-2">
+
+                  {/* CAPTCHA BOX */}
+                  <div
+                    className="flex items-center justify-center gap-0.5 bg-white border border-[#1A2B42]/10 rounded-lg py-2 px-3 select-none relative overflow-hidden"
+                    style={{ minWidth: 150 }}
+                  >
+                    <div className="absolute inset-0 flex items-center px-2 pointer-events-none">
+                      <div
+                        className="w-full border-t border-dashed border-[#1A2B42]/10"
+                        style={{ transform: "rotate(-1.5deg)" }}
+                      />
+                    </div>
+
+                    {captchaCode.split("").map((char, i) => (
+                      <span
+                        key={i}
+                        className="font-mono font-bold relative z-10 inline-block"
+                        style={{
+                          color: COLORS[i % COLORS.length],
+                          transform: `rotate(${ROTATIONS[i]}deg) translateY(${SHIFTS[i]}px)`,
+                          fontSize: 18 + (i % 3),
+                        }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* REFRESH BUTTON */}
+                  <button
+                    type="button"
+                    onClick={refreshCaptcha}
+                    className="p-3 border border-[#1A2B42]/10 rounded-lg text-[#132238]/50 hover:text-[#132238] hover:bg-white transition-colors"
+                  >
+                    <svg
+                      ref={refreshIconRef}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                      <path d="M21 3v5h-5" />
+                      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                      <path d="M8 16H3v5" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* CAPTCHA INPUT */}
+                <input
+                  type="text"
+                  value={captchaInput}
+                  onChange={handleCaptchaInput}
+                  placeholder="Enter CAPTCHA code"
+                  maxLength={6}
+                  autoComplete="off"
+                  className={`w-full bg-white border rounded-lg p-3 text-sm text-[#132238] uppercase tracking-[0.3em] focus:outline-none focus:border-[#C89B2C]/50 transition-colors ${
+                    captchaError
+                      ? "border-red-400"
+                      : "border-[#1A2B42]/10"
+                  }`}
+                />
+
+                {captchaError && (
+                  <p className="text-red-500 text-xs">
+                    {captchaError}
+                  </p>
+                )}
+              </div>
+
               <Button type="submit" variant="primary" className="w-full mt-4">
                 Continue to Eligibility Steps →
               </Button>
             </form>
           )}
 
-          {/* Steps 1 to 3 */}
+          {/* STEPS 1 TO 3 */}
           {step >= 1 && step <= 3 && (
             <div className="space-y-6 animate-fadeIn">
+
               <div className="space-y-2">
                 <span className="text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold">
                   Evaluation Phase 0{step} of 03
@@ -279,9 +514,10 @@ export default function ContactForm() {
             </div>
           )}
 
-          {/* Step 4 */}
+          {/* STEP 4 */}
           {step === 4 && (
             <div className="space-y-6 animate-fadeIn text-center py-4">
+
               <div className="w-12 h-12 bg-[#C89B2C]/10 border border-[#C89B2C]/30 rounded-full flex items-center justify-center mx-auto text-[#C89B2C] text-xl">
                 ✓
               </div>
