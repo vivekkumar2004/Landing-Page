@@ -61,7 +61,7 @@ export default function Process() {
               </div>
 
               {/* Card */}
-              <Card className="rounded-2xl p-6 md:p-8 bg-white/70 backdrop-blur-md border border-[#1A2B42]/10 hover:border-[#C89B2C]/30 shadow-sm hover:shadow-md transition-all duration-500">
+              <Card className="rounded-2xl p-6 md:p-8 bg-white border border-[#1A2B42]/10 hover:border-[#C89B2C]/30 shadow-sm hover:shadow-md transition-all duration-500">
                 <h3 className="font-serif text-2xl md:text-3xl font-medium leading-tight text-[#132238] mb-4 group-hover:text-[#C89B2C] transition-colors duration-300">
                   {step.title}
                 </h3>

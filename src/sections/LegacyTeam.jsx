@@ -98,6 +98,7 @@ export default function LegacyTeam() {
               <Card
                 key={i}
                 className="group rounded-2xl p-6 md:p-8 border border-[#1A2B42]/10 bg-white/70 backdrop-blur-md shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-500"
+                style ={{willChange: "transform"}}
               >
                 <div className="aspect-[4/5] overflow-hidden rounded-xl mb-6 grayscale group-hover:grayscale-0 transition-all duration-700">
                   <img

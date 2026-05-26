@@ -13,7 +13,7 @@ export default function Convocation() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -57,7 +57,7 @@ export default function Convocation() {
               <img
                 src={src}
                 alt="Convocation ceremony highlight"
-                loading={idx === 0 ? "eager" : "lazy"}
+                loading={idx === 0 || idx === currentIndex ? "eager" : "lazy"}
                 decoding="async"
                 width="1600"
                 height="900"
