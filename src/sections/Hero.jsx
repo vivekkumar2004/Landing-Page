@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Popup from "../components/UI/Popup";
-import hero from "../assets/Home/hero.jpg";
+import hero from "../assets/Home/hero.avif";
 
 export default function Hero() {
   const [showPopup, setShowPopup] = useState(false);

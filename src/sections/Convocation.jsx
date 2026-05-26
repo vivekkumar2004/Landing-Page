@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import convocation1 from "../assets/Convocation/convocation1.jpg";
-import convocation2 from "../assets/Convocation/convocation2.jpg";
-import convocation3 from "../assets/Convocation/convocation3.avif";
-import convocation4 from "../assets/Convocation/convocation4.avif";
+// import convocation1 from "../assets/Convocation/convocation1.jpg";
+// import convocation2 from "../assets/Convocation/convocation2.jpg";
+// import convocation3 from "../assets/Convocation/convocation3.avif";
+// import convocation4 from "../assets/Convocation/convocation4.avif";
 
-const images = [convocation1, convocation2, convocation3, convocation4];
+import conv1 from "../assets/Convocation/conv1.avif"
+import conv2 from "../assets/Convocation/conv2.avif"
+import conv5 from "../assets/Convocation/conv3.avif"
+import conv4 from "../assets/Convocation/conv4.avif"
+
+const images = [conv1, conv2, conv5, conv4];
 
 export default function Convocation() {
   const [currentIndex, setCurrentIndex] = useState(0);
