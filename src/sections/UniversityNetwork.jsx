@@ -87,7 +87,7 @@ export default function UniversityNetwork() {
       <div className="space-y-8 relative z-10">
         {[1, 2].map((row) => (
           <div
-            key={`row-${row}`}
+            key={row}
             className={`flex w-[200%] ${
               row === 1 ? "animate-slideLeft" : "animate-slideRight"
             } gap-8`}
@@ -97,24 +97,22 @@ export default function UniversityNetwork() {
               : [...universityLogos, ...universityLogos].reverse()
             ).map((uni, i) => (
               <a
-                key={`${uni.name}-${i}`}
+                key={i}
                 href={uni.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Visit ${uni.name} website`}
-                title={uni.name}
                 className="block"
               >
                 <Card className="h-28 px-6 flex items-center gap-6 min-w-[360px] bg-white/60 backdrop-blur-md border-[#1A2B42]/10 hover:border-[#C89B2C]/30 hover:bg-white/80 transition-all duration-300 shadow-sm cursor-pointer group">
-                  
                   <div className="w-16 h-16 flex items-center justify-center shrink-0 bg-white rounded-xl p-2 shadow-sm border border-[#1A2B42]/5">
                     <img
                       src={uni.logoUrl}
-                      alt={`${uni.name} official logo`}
+                      alt={`${uni.name} Logo`}
                       loading="lazy"
                       decoding="async"
                       width="64"
                       height="64"
+                      sizes="64px"
                       className="max-h-12 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>

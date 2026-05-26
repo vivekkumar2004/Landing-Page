@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
 import TestimonialCard from "../components/UI/TestimonialCard";
-
 import testimonials1 from "../assets/Testimonials/testimonials1.jpeg";
 import testimonials2 from "../assets/Testimonials/testimonials2.jpeg";
 import testimonials3 from "../assets/Testimonials/testimonials3.jpeg";
@@ -41,45 +40,26 @@ const testimonials = [
 export default function Testimonial() {
   const controls = useAnimation();
   const shouldReduceMotion = useReducedMotion();
-  const isPaused = useRef(false);
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    startAnimation();
+  }, [controls, shouldReduceMotion]);
 
   const startAnimation = () => {
-    if (shouldReduceMotion || isPaused.current) return;
-
     controls.start({
       x: ["0%", "-50%"],
       transition: {
         repeat: Infinity,
         duration: 25,
         ease: "linear",
-        repeatType: "loop",
       },
     });
   };
 
-  useEffect(() => {
-    startAnimation();
-
-    const handleVisibility = () => {
-      if (document.hidden) {
-        controls.stop();
-        isPaused.current = true;
-      } else {
-        isPaused.current = false;
-        startAnimation();
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibility);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibility);
-    };
-  }, []);
-
   return (
     <section className="py-10 md:py-14 bg-[#EEF4FF] overflow-hidden border-y border-[#1A2B42]/10">
-      {/* Header */}
+      {/* Header — same as before */}
       <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12 px-4">
         <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold mb-4">
           Testimonials
@@ -93,7 +73,7 @@ export default function Testimonial() {
         </p>
       </div>
 
-      {/* Scrolling row */}
+      {/* Scrolling Testimonials — will-change added for GPU layer */}
       <motion.div
         className="flex gap-6 px-4 cursor-grab"
         style={{ willChange: "transform" }}

@@ -1,31 +1,46 @@
-import Hero from '../sections/Hero';
-import SocialProof from '../sections/SocialProof';
-import AdmissionsNews from '../sections/AdmissionsNews';
-import WhoThisIsFor from '../sections/WhoThisIsFor';
-import LegacyTeam from '../sections/LegacyTeam';
-import Process from '../sections/Process';
-import UniversityNetwork from '../sections/UniversityNetwork';
-import FAQ from '../sections/FAQ';
-import Blog from '../sections/Blog';
-import ContactForm from '../sections/ContactForm';
-import Testimonial from '../sections/Testimonial';
-import Convocation from '../sections/Convocation';
+import React, { lazy, Suspense } from "react";
+
+import Hero from "../sections/Hero";
+import SocialProof from "../sections/SocialProof";
+import AdmissionsNews from "../sections/AdmissionsNews";
+import WhoThisIsFor from "../sections/WhoThisIsFor";
+import Process from "../sections/Process";
+import UniversityNetwork from "../sections/UniversityNetwork";
+import LegacyTeam from "../sections/LegacyTeam";
+
+// 🔥 heavy below-the-fold
+const Testimonial = lazy(() => import("../sections/Testimonial"));
+const Convocation = lazy(() => import("../sections/Convocation"));
+const FAQ = lazy(() => import("../sections/FAQ"));
+const Blog = lazy(() => import("../sections/Blog"));
+const ContactForm = lazy(() => import("../sections/ContactForm"));
 
 export default function Home() {
   return (
     <>
+      {/* ✅ ABOVE THE FOLD (instant load) */}
       <Hero />
       <SocialProof />
       <AdmissionsNews />
       <WhoThisIsFor />
-      <LegacyTeam />
       <Process />
       <UniversityNetwork />
-      <Convocation/>
-      <Testimonial/>
-      <FAQ />
-      <Blog />
-      <ContactForm />
+      <LegacyTeam />
+
+      {/* 🔥 BELOW THE FOLD (lazy load) */}
+      <Suspense
+        fallback={
+          <div className="py-10 text-center text-sm text-gray-400">
+            Loading more sections...
+          </div>
+        }
+      >
+        <Testimonial />
+        <Convocation />
+        <FAQ />
+        <Blog />
+        <ContactForm />
+      </Suspense>
     </>
   );
 }
