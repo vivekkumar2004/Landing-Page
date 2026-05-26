@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { motion, useAnimation, useReducedMotion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
 import TestimonialCard from "../components/UI/TestimonialCard";
 import testimonials1 from "../assets/Testimonials/testimonials1.jpeg";
 import testimonials2 from "../assets/Testimonials/testimonials2.jpeg";
@@ -38,28 +37,24 @@ const testimonials = [
 ];
 
 export default function Testimonial() {
-  const controls = useAnimation();
-  const shouldReduceMotion = useReducedMotion();
+  const trackRef = useRef(null);
 
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    startAnimation();
-  }, [controls, shouldReduceMotion]);
+  // Hover pe pause karo
+  const handleMouseEnter = () => {
+    if (trackRef.current) {
+      trackRef.current.style.animationPlayState = "paused";
+    }
+  };
 
-  const startAnimation = () => {
-    controls.start({
-      x: ["0%", "-50%"],
-      transition: {
-        repeat: Infinity,
-        duration: 25,
-        ease: "linear",
-      },
-    });
+  const handleMouseLeave = () => {
+    if (trackRef.current) {
+      trackRef.current.style.animationPlayState = "running";
+    }
   };
 
   return (
     <section className="py-10 md:py-14 bg-[#EEF4FF] overflow-hidden border-y border-[#1A2B42]/10">
-      {/* Header — same as before */}
+      {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12 px-4">
         <span className="inline-block text-[10px] uppercase tracking-[0.28em] text-[#C89B2C] font-semibold mb-4">
           Testimonials
@@ -73,18 +68,22 @@ export default function Testimonial() {
         </p>
       </div>
 
-      {/* Scrolling Testimonials — will-change added for GPU layer */}
-      <motion.div
-        className="flex gap-6 px-4 cursor-grab"
-        style={{ willChange: "transform" }}
-        animate={controls}
-        onHoverStart={() => controls.stop()}
-        onHoverEnd={startAnimation}
+      {/* Scrolling Track */}
+      <div
+        className="cursor-grab"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {[...testimonials, ...testimonials].map((testimonial, idx) => (
-          <TestimonialCard key={idx} {...testimonial} />
-        ))}
-      </motion.div>
+        <div
+          ref={trackRef}
+          className="flex gap-6 px-4 animate-slideLeft"
+          style={{ willChange: "transform" }}
+        >
+          {[...testimonials, ...testimonials].map((testimonial, idx) => (
+            <TestimonialCard key={idx} {...testimonial} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
