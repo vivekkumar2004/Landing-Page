@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Home from "./Pages/Home"
 import Footer from "./components/Footer";
 import Courses from "./Pages/Courses";
 
