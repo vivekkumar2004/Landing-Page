@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* Right Side (Apply + Menu) */}
         <div className="flex items-center gap-3 shrink-0">
-          {/* Apply Now Button (RIGHT ALIGNED PROPERLY) */}
+          {/* Apply Now Button */}
           <div className="hidden md:flex ml-auto">
             <HashLink
               to="/#contact"
@@ -79,6 +79,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md border border-[#2563EB]/20 bg-white text-[#334155] hover:text-[#2563EB] transition-all duration-300"
           >
