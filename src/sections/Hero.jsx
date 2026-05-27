@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Popup from "../components/UI/Popup";
 import hero from "../assets/Home/hero.avif";
+import heroMobile from "../assets/Home/heroMobile.avif";
 
 export default function Hero() {
   const [showPopup, setShowPopup] = useState(false);
@@ -49,8 +50,8 @@ export default function Hero() {
             </h1>
 
             <p className="text-[#4A5568] text-lg max-w-xl font-light leading-relaxed pl-6 border-l-2 border-[#D4AF37]">
-              We don’t sell degrees. <strong>Techversity</strong> bridges the
-              gap between your life’s work and the academic recognition it
+              We don't sell degrees. <strong>Techversity</strong> bridges the
+              gap between your life's work and the academic recognition it
               deserves.
             </p>
 
@@ -71,16 +72,24 @@ export default function Hero() {
           <div className="flex-1 w-full h-[300px] sm:h-[400px] lg:h-[500px]">
             <div className="w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-white/40 relative backdrop-blur-xl">
               <div className="absolute inset-0 bg-gradient-to-t from-[#132238]/10 to-transparent z-10"></div>
-              <img
-                src={hero}
-                alt="Professional academic mentor portrait"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                width="1200"
-                height="900"
-                className="w-full h-full object-cover"
-              />
+              {/* ✅ Mobile pe 16KB image, Desktop pe full quality */}
+              <picture>
+                <source
+                  srcSet={heroMobile}
+                  media="(max-width: 768px)"
+                  type="image/avif"
+                />
+                <img
+                  src={hero}
+                  alt="Professional academic mentor portrait"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  width="1200"
+                  height="900"
+                  className="w-full h-full object-cover"
+                />
+              </picture>
             </div>
           </div>
         </div>
